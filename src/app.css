@@ -1,0 +1,61 @@
+html, body {
+  margin: 0;
+  width: 100%;
+}
+
+.App .left {
+  left: 10vw;
+  z-index: 10;
+}
+.App .center {
+  left: calc(50vw - 20vw/2);
+  z-index: 100 !important;
+}
+.App .right {
+  left: calc(80vw - 20vw/2);
+  z-index: 30;
+}
+.App .block {
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: #42ffba;
+  width: 20vw;
+  height: 45vh;
+  position: absolute;
+  top: calc(50vh - 22.5vh);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 1s;
+}
+.App .block .text {
+  position: relative;
+  top: -40px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.App .left-focused {
+  left: 5vw !important;
+  top: calc(50vh - 45vh) !important;
+  width: calc(20vw *2) !important;
+  height: calc(45vh *2) !important;
+  z-index: 20;
+}
+.App .center-focused {
+  left: calc(50vw - 20vw) !important;
+  top: calc(50vh - 45vh) !important;
+  width: calc(20vw *2) !important;
+  height: calc(45vh *2) !important;
+  z-index: 20;
+}
+.App .right-focused {
+  right: 5vw !important;
+  top: calc(50vh - 45vh) !important;
+  width: calc(20vw *2) !important;
+  height: calc(45vh *2) !important;
+  z-index: 20;
+}
+
+/*# sourceMappingURL=app.css.map */

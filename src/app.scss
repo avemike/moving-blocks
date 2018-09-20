@@ -1,0 +1,71 @@
+$block_width: 20vw;
+$block_height: 45vh;
+html, body {
+    margin: 0;
+    width: 100%;
+    // background-color:black;
+}
+.App {
+    .block:hover {
+        
+    }
+    .left {
+        left: 10vw;
+        z-index: 10;
+    }
+    .center {
+        left: calc(50vw - #{$block_width}/2);
+        z-index: 100 !important;        
+    }
+    .right {
+        left: calc(80vw - #{$block_width}/2);
+        z-index: 30;
+    }
+    .block {
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: rgba(66,255,186,1);
+        width: $block_width;
+        height: $block_height;
+        position: absolute;
+        top: calc(50vh - #{$block_height/2});
+        
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        transition: all 1s;
+        .text {
+            position: relative;
+            top: -40px;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center; 
+        } 
+        
+    }
+    .left-focused {
+        left: 5vw !important;
+        top: calc(50vh - #{$block_height}) !important;
+        width: calc(#{$block_width} *2) !important;
+        height: calc(#{$block_height} *2) !important;
+        z-index: 20;
+    }
+    .center-focused {
+        left: calc(50vw - #{$block_width}) !important;  
+        top: calc(50vh - #{$block_height}) !important;
+        width: calc(#{$block_width} *2) !important;
+        height: calc(#{$block_height} *2) !important;
+        z-index: 20;    
+    }
+    .right-focused {
+        right: 5vw !important;
+        top: calc(50vh - #{$block_height}) !important;
+        width: calc(#{$block_width} *2) !important;
+        height: calc(#{$block_height} *2) !important;
+        z-index: 20;    
+    }
+}
+
+
