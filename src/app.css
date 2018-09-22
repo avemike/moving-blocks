@@ -18,7 +18,7 @@ html, body {
 .App .block {
   cursor: pointer;
   border: 1px solid black;
-  background-color: #42ffba;
+  background-color: #0619ba;
   width: 20vw;
   height: 45vh;
   position: absolute;

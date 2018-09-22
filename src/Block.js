@@ -2,29 +2,13 @@ import React, { Component } from 'react';
 import BackgroundCanvas from './BackgroundCanvas';
 
 class Block extends Component {
+
     zoom(e) { 
         const getTheBlock = function (target) {
             if(target.className.includes('block')) return target;
             else return getTheBlock(target.parentNode);
         }
-        const segregateBlocks = function (target) {
-            // [...allBlocks].forEach((block) => {
-            //     if(block.className.includes('-focused')) {                
-            //         const center = document.querySelector('.center');  
-            //         const left = document.querySelector('.left');
-            //         const right = document.querySelector('.right');  
-                    
-            //         if(block.className.includes(' left ')) {
-            //             left.className = left.classList[0] + ' center ' + left.classList[2];
-            //             center.className = center.classList[0] + ' right ' + center.classList[2];
-            //             right.className = right.classList[0] + ' left ' + right.classList[2];
-            //         }else if(block.className.includes(' left ')) {
-
-            //         }else {
-
-            //         }
-            //     }
-            // })    
+        const segregateBlocks = function (target) {    
             switch(target.classList[1]) {
                 case 'left':
                     document.querySelector('.right').classList.replace('right', 'left');
@@ -53,7 +37,7 @@ class Block extends Component {
     }
     render() {
         return (
-        <div className={'block '+ this.props.position} onClick={this.zoom.bind(this)}> 
+        <div onClick={this.props.onClick} className={'block '+ this.props.position}> 
             <div className="text">
                 <h1>{this.props.title}</h1>
                 <p>{this.props.basicInfo}</p>
