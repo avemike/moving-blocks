@@ -6,9 +6,11 @@ html, body {
     // background-color:black;
 }
 .App {
-    .block:hover {
-        
+    .covering {
+        z-index: 50;
     }
+    width: 100vw;
+    height: 100vh;
     .left {
         left: 10vw;
         z-index: 10;
@@ -29,12 +31,11 @@ html, body {
         height: $block_height;
         position: absolute;
         top: calc(50vh - #{$block_height/2});
-        
         display: flex;
         justify-content: space-around;
         align-items: center;
 
-        transition: all 1s;
+        transition: all 0.9s;
         .text {
             position: relative;
             top: -40px;
@@ -57,7 +58,7 @@ html, body {
         top: calc(50vh - #{$block_height}) !important;
         width: calc(#{$block_width} *2) !important;
         height: calc(#{$block_height} *2) !important;
-        z-index: 20;    
+        z-index: 100;    
     }
     .right-focused {
         right: 5vw !important;

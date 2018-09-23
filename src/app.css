@@ -3,6 +3,13 @@ html, body {
   width: 100%;
 }
 
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+.App .covering {
+  z-index: 50;
+}
 .App .left {
   left: 10vw;
   z-index: 10;
@@ -26,7 +33,7 @@ html, body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  transition: all 1s;
+  transition: all 0.9s;
 }
 .App .block .text {
   position: relative;
@@ -48,7 +55,7 @@ html, body {
   top: calc(50vh - 45vh) !important;
   width: calc(20vw *2) !important;
   height: calc(45vh *2) !important;
-  z-index: 20;
+  z-index: 100;
 }
 .App .right-focused {
   right: 5vw !important;
