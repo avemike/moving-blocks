@@ -1,71 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Poppins:600,700');
+
 $block_width: 20vw;
 $block_height: 45vh;
 html, body {
     margin: 0;
     width: 100%;
+    color: #fff;
     // background-color:black;
+} 
+p {
+    font-family: 'Lato';
+    font-weight: 500;
+}
+h1 {
+    font-family: 'Poppins';
+    font-weight: 600;
 }
 .App {
-    .covering {
-        z-index: 50;
-    }
     width: 100vw;
     height: 100vh;
     .left {
-        left: 10vw;
+        left: 10.1vw;
         z-index: 10;
+        background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
     }
     .center {
         left: calc(50vw - #{$block_width}/2);
+        background-image: linear-gradient(to bottom, #051937, #0b224b, #162b60, #253374, #363b89);
         z-index: 100 !important;        
     }
     .right {
+        background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
         left: calc(80vw - #{$block_width}/2);
         z-index: 30;
     }
     .block {
         cursor: pointer;
-        border: 1px solid black;
-        background-color: rgba(6,25,186,1);
+        box-sizing: border-box;
         width: $block_width;
         height: $block_height;
         position: absolute;
+        padding: 10px;
         top: calc(50vh - #{$block_height/2});
         display: flex;
         justify-content: space-around;
-        align-items: center;
 
-        transition: all 0.9s;
+        transition: all 0.9s, outline 0.3s;
         .text {
             position: relative;
             top: -40px;
             display: flex;
             flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center; 
+            align-items: center;
+            h1 {
+                transition: all 0.9s;
+                font-size: 3em;
+                letter-spacing: 0.3vw !important;
+            } 
+            p {
+                transition: all 0.9s;
+                font-size: 1.5em;
+                padding: 0 10%;
+            }
         } 
-        
+        &:hover {
+            outline: 3px dashed red;
+        }
     }
-    .left-focused {
-        left: 5vw !important;
-        top: calc(50vh - #{$block_height}) !important;
-        width: calc(#{$block_width} *2) !important;
-        height: calc(#{$block_height} *2) !important;
-        z-index: 20;
+    .covering {
+        z-index: 60;
     }
     .center-focused {
+        padding: 20px !important;
         left: calc(50vw - #{$block_width}) !important;  
         top: calc(50vh - #{$block_height}) !important;
         width: calc(#{$block_width} *2) !important;
         height: calc(#{$block_height} *2) !important;
-        z-index: 100;    
-    }
-    .right-focused {
-        right: 5vw !important;
-        top: calc(50vh - #{$block_height}) !important;
-        width: calc(#{$block_width} *2) !important;
-        height: calc(#{$block_height} *2) !important;
-        z-index: 20;    
+        z-index: 100;
+        h1 {
+            font-size: 6em !important;
+            letter-spacing: 0.6vw !important;
+        }
+        p {
+            font-size: 3em !important;
+        }
     }
 }
 

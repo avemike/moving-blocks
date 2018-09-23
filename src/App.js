@@ -29,23 +29,29 @@ class App extends Component {
     this.state.maxIndexOrder = this.state.listOfBlocks.length -1;
   
     this.segregateBlocks();
+    this.state.listOfBlocks[this.state.centerIndex].classList.remove('center-focused');
   }
   updateClasses() {
     for(let i = 0, max = this.state.listOfBlocks.length; i < max; i++) {
-      const currentClassList = this.state.listOfBlocks[i].classList;
+      const current = this.state.listOfBlocks[i];
       
-      if(this.state.listOfBlocks[i].order < this.state.centerIndex) {
-        currentClassList.replace(currentClassList[1], "left");
-        currentClassList.remove('center-focused');     
-      } else if(this.state.listOfBlocks[i].order > this.state.centerIndex) {
-        currentClassList.replace(currentClassList[1], "right");
-        currentClassList.remove('center-focused');           
+      if(current.order < this.state.centerIndex) {
+        current.classList.replace(current.classList[1], "left");
+        current.classList.remove('center-focused');     
+        current.classList.remove('covering');                   
+      } else if(current.order > this.state.centerIndex) {
+        current.classList.replace(current.classList[1], "right");
+        current.classList.remove('center-focused');           
+        current.classList.remove('covering');                    
       } else {
-        currentClassList.replace(currentClassList[1], "center");
-        currentClassList.add('center-focused');           
+        current.classList.replace(current.classList[1], "center");
+        current.classList.add('center-focused');           
       }
 
       //add covering
+      if(current.order - 1 === this.state.centerIndex || current.order + 1 === this.state.centerIndex) {  
+        current.classList.add('covering');                           
+      }
     }
   }
   segregateBlocks() {
@@ -93,9 +99,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Block onClick={this.handleClick.bind(this)} title="Home" basicInfo={info[0]}/>
         <Block onClick={this.handleClick.bind(this)} title="Contact" basicInfo={info[1]}/>        
         <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>              
+        <Block onClick={this.handleClick.bind(this)} title="New Game" basicInfo={info[0]}/>
         <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>        
         <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>        
       </div>

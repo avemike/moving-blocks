@@ -1,68 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Poppins:600,700");
 html, body {
   margin: 0;
   width: 100%;
+  color: #fff;
+}
+
+p {
+  font-family: "Lato";
+  font-weight: 500;
+}
+
+h1 {
+  font-family: "Poppins";
+  font-weight: 600;
 }
 
 .App {
   width: 100vw;
   height: 100vh;
 }
-.App .covering {
-  z-index: 50;
-}
 .App .left {
-  left: 10vw;
+  left: 10.1vw;
   z-index: 10;
+  background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
 }
 .App .center {
   left: calc(50vw - 20vw/2);
+  background-image: linear-gradient(to bottom, #051937, #0b224b, #162b60, #253374, #363b89);
   z-index: 100 !important;
 }
 .App .right {
+  background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
   left: calc(80vw - 20vw/2);
   z-index: 30;
 }
 .App .block {
   cursor: pointer;
-  border: 1px solid black;
-  background-color: #0619ba;
+  box-sizing: border-box;
   width: 20vw;
   height: 45vh;
   position: absolute;
+  padding: 10px;
   top: calc(50vh - 22.5vh);
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  transition: all 0.9s;
+  transition: all 0.9s, outline 0.3s;
 }
 .App .block .text {
   position: relative;
   top: -40px;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
 }
-.App .left-focused {
-  left: 5vw !important;
-  top: calc(50vh - 45vh) !important;
-  width: calc(20vw *2) !important;
-  height: calc(45vh *2) !important;
-  z-index: 20;
+.App .block .text h1 {
+  transition: all 0.9s;
+  font-size: 3em;
+  letter-spacing: 0.3vw !important;
+}
+.App .block .text p {
+  transition: all 0.9s;
+  font-size: 1.5em;
+  padding: 0 10%;
+}
+.App .block:hover {
+  outline: 3px dashed red;
+}
+.App .covering {
+  z-index: 60;
 }
 .App .center-focused {
+  padding: 20px !important;
   left: calc(50vw - 20vw) !important;
   top: calc(50vh - 45vh) !important;
   width: calc(20vw *2) !important;
   height: calc(45vh *2) !important;
   z-index: 100;
 }
-.App .right-focused {
-  right: 5vw !important;
-  top: calc(50vh - 45vh) !important;
-  width: calc(20vw *2) !important;
-  height: calc(45vh *2) !important;
-  z-index: 20;
+.App .center-focused h1 {
+  font-size: 6em !important;
+  letter-spacing: 0.6vw !important;
+}
+.App .center-focused p {
+  font-size: 3em !important;
 }
 
 /*# sourceMappingURL=app.css.map */
