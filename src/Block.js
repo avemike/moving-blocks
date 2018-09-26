@@ -7,7 +7,7 @@ class Block extends Component {
         <div onClick={this.props.onClick} className={'block '+ this.props.position}> 
             <div className="text">
                 <h1>{this.props.title}</h1>
-                <p>{this.props.basicInfo}</p>
+                {this.props.children}   
             </div>
         </div>
         );

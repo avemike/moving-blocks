@@ -2,7 +2,8 @@
 html, body {
   margin: 0;
   width: 100%;
-  color: #fff;
+  height: 100vh;
+  overflow: hidden;
 }
 
 p {
@@ -16,52 +17,70 @@ h1 {
 }
 
 .App {
-  width: 100vw;
+  background-image: linear-gradient(to left bottom, #424259, #3e4058, #393f57, #353d56, #303c55);
+  box-sizing: border-box;
+  width: 100%;
   height: 100vh;
 }
-.App .left {
-  left: 10.1vw;
+.App .rest-left {
+  left: -15vw;
   z-index: 10;
-  background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
+}
+.App .second-left {
+  left: -2.5vw;
+  z-index: 10;
+}
+.App .first-left {
+  left: 20vw;
+  z-index: 10;
 }
 .App .center {
-  left: calc(50vw - 20vw/2);
-  background-image: linear-gradient(to bottom, #051937, #0b224b, #162b60, #253374, #363b89);
+  left: calc(50vw - 15vw/2);
   z-index: 100 !important;
 }
-.App .right {
-  background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
-  left: calc(80vw - 20vw/2);
+.App .first-right {
+  left: 65vw;
   z-index: 30;
 }
+.App .second-right {
+  left: 87.5vw;
+  z-index: 10;
+}
+.App .rest-right {
+  left: 100vw;
+  z-index: 10;
+}
 .App .block {
+  background-color: white;
+  color: #303c55;
   cursor: pointer;
   box-sizing: border-box;
-  width: 20vw;
+  width: 15vw;
   height: 45vh;
   position: absolute;
   padding: 10px;
   top: calc(50vh - 22.5vh);
   display: flex;
   justify-content: space-around;
-  transition: all 0.9s, outline 0.3s;
+  transition: all 0.9s, outline 0s;
 }
 .App .block .text {
   position: relative;
-  top: -40px;
+  top: 10%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 .App .block .text h1 {
+  margin: 0;
   transition: all 0.9s;
-  font-size: 3em;
-  letter-spacing: 0.3vw !important;
+  font-size: 2em;
+  letter-spacing: 0.1vw !important;
 }
 .App .block .text p {
   transition: all 0.9s;
-  font-size: 1.5em;
-  padding: 0 10%;
+  font-size: 1em;
+  padding: 0 20px;
 }
 .App .block:hover {
   outline: 3px dashed red;
@@ -69,20 +88,20 @@ h1 {
 .App .covering {
   z-index: 60;
 }
-.App .center-focused {
+.App .focused {
   padding: 20px !important;
-  left: calc(50vw - 20vw) !important;
+  left: calc(50vw - 15vw) !important;
   top: calc(50vh - 45vh) !important;
-  width: calc(20vw *2) !important;
+  width: calc(15vw *2) !important;
   height: calc(45vh *2) !important;
   z-index: 100;
 }
-.App .center-focused h1 {
-  font-size: 6em !important;
+.App .focused h1 {
+  font-size: 4em !important;
   letter-spacing: 0.6vw !important;
 }
-.App .center-focused p {
-  font-size: 3em !important;
+.App .focused p {
+  font-size: 2em !important;
 }
 
 /*# sourceMappingURL=app.css.map */

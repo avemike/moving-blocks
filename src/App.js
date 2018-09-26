@@ -29,28 +29,43 @@ class App extends Component {
     this.state.maxIndexOrder = this.state.listOfBlocks.length -1;
   
     this.segregateBlocks();
-    this.state.listOfBlocks[this.state.centerIndex].classList.remove('center-focused');
+    this.state.listOfBlocks[this.state.centerIndex].classList.remove('focused');
   }
   updateClasses() {
     for(let i = 0, max = this.state.listOfBlocks.length; i < max; i++) {
       const current = this.state.listOfBlocks[i];
-      
-      if(current.order < this.state.centerIndex) {
-        current.classList.replace(current.classList[1], "left");
-        current.classList.remove('center-focused');     
-        current.classList.remove('covering');                   
-      } else if(current.order > this.state.centerIndex) {
-        current.classList.replace(current.classList[1], "right");
-        current.classList.remove('center-focused');           
-        current.classList.remove('covering');                    
-      } else {
-        current.classList.replace(current.classList[1], "center");
-        current.classList.add('center-focused');           
+      if(current.order + 2 > this.state.centerIndex) {
+        current.className = '';
+        current.classList.add('block', 'rest-right');
+      } else if(current.order - 2 < this.state.centerIndex) {
+        current.className = '';
+        current.classList.add('block', 'rest-right');
       }
 
-      //add covering
-      if(current.order - 1 === this.state.centerIndex || current.order + 1 === this.state.centerIndex) {  
-        current.classList.add('covering');                           
+      switch(current.order) {
+        case this.state.centerIndex - 2:
+          current.className = '';
+          current.classList.add('block', 'second-left');
+        break;
+        case this.state.centerIndex - 1:
+          current.className = '';
+          current.classList.add('block', 'first-left', 'covering');
+        break;
+        case this.state.centerIndex:
+          current.className = '';
+          current.classList.add('block', 'center', 'focused');
+        break;
+        case this.state.centerIndex + 1:
+          current.className = '';
+          current.classList.add('block', 'first-right', 'covering');
+        break;
+        case this.state.centerIndex + 2:
+          current.className = '';
+          current.classList.add('block', 'second-right', 'covering');
+        break;
+        default:
+
+        break;
       }
     }
   }
@@ -59,13 +74,13 @@ class App extends Component {
     for(let i = 0, end = this.state.listOfBlocks.length; i < end; i++) {
       const currentElem = this.state.listOfBlocks[i];
       
-      if(currentElem.order + this.state.shift < 0) {          //if elem falls from the edge to the other side (left -> right)
+      if(currentElem.order + this.state.shift < 0) {          //if elem falls from the edge to the other side (first-left -> first-right)
         currentElem.order = 
           this.state.maxIndexOrder 
           + this.state.shift 
           + currentElem.order 
           + 1; 
-      } else if (currentElem.order + this.state.shift > this.state.maxIndexOrder) {  //if elem falls from the edge to the other side (right -> left)
+      } else if (currentElem.order + this.state.shift > this.state.maxIndexOrder) {  //if elem falls from the edge to the other side (first-right -> first-left)
         currentElem.order = 
           this.state.minIndexOrder 
           + this.state.shift 
@@ -92,18 +107,32 @@ class App extends Component {
     
     this.state.shift = this.state.centerIndex - targetIndex; 
     if(this.state.shift === 0) {
-      target.classList.toggle('center-focused');
+      target.classList.toggle('focused');
     }
     else this.segregateBlocks();
   }
   render() {
     return (
       <div className="App">
-        <Block onClick={this.handleClick.bind(this)} title="Contact" basicInfo={info[1]}/>        
-        <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>              
-        <Block onClick={this.handleClick.bind(this)} title="New Game" basicInfo={info[0]}/>
-        <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>        
-        <Block onClick={this.handleClick.bind(this)} title="ThirdTitle" basicInfo={info[2]}/>        
+        <Block onClick={this.handleClick.bind(this)} title="New Game" basicInfo={info[0]}>
+          <p>Do you want to start new game?</p>
+          <button>Start</button>
+        </Block>  
+        <Block onClick={this.handleClick.bind(this)} title="Load game">
+          <p>Are you ready?</p>
+          <button>Load</button>
+        </Block>              
+        <Block onClick={this.handleClick.bind(this)} title="Continue">
+          <p>Continue the adventure</p>
+          <button>Continue</button>
+        </Block>
+        <Block onClick={this.handleClick.bind(this)} title="Settings">
+          <p>Show up basic settings of the game</p>
+          <button>Settings</button>
+        </Block>        
+        <Block onClick={this.handleClick.bind(this)} title="Exit">
+          <button>Exit now</button>
+        </Block>        
       </div>
     );
   }

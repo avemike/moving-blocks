@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Poppins:600,700');
 
-$block_width: 20vw;
+$block_width: 15vw;
 $block_height: 45vh;
 html, body {
     margin: 0;
     width: 100%;
-    color: #fff;
-    // background-color:black;
+    height: 100vh;      //the same at app doesn't work, in app this 
+    overflow: hidden;   //makes my app container higher than screen (idk why)
 } 
 p {
     font-family: 'Lato';
@@ -17,24 +17,42 @@ h1 {
     font-weight: 600;
 }
 .App {
-    width: 100vw;
+
+    background-image: linear-gradient(to left bottom, #424259, #3e4058, #393f57, #353d56, #303c55);
+    box-sizing: border-box;
+    width: 100%;
     height: 100vh;
-    .left {
-        left: 10.1vw;
+    .rest-left {
+        left: -15vw;
         z-index: 10;
-        background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
+    }
+    .second-left {
+        left: -2.5vw;
+        z-index: 10;
+    }
+    .first-left {
+        left: 20vw;
+        z-index: 10;
     }
     .center {
         left: calc(50vw - #{$block_width}/2);
-        background-image: linear-gradient(to bottom, #051937, #0b224b, #162b60, #253374, #363b89);
         z-index: 100 !important;        
     }
-    .right {
-        background-image: linear-gradient(to bottom, #051937, #0c1e42, #14234e, #1e2859, #292d64);
-        left: calc(80vw - #{$block_width}/2);
+    .first-right {
+        left: 65vw;
         z-index: 30;
     }
+    .second-right {
+        left: 87.5vw;
+        z-index: 10;
+    }
+    .rest-right {
+        left: 100vw;
+        z-index: 10;
+    }
     .block {
+        background-color: white;
+        color: #303c55;
         cursor: pointer;
         box-sizing: border-box;
         width: $block_width;
@@ -45,22 +63,23 @@ h1 {
         display: flex;
         justify-content: space-around;
 
-        transition: all 0.9s, outline 0.3s;
+        transition: all 0.9s, outline 0s;
         .text {
             position: relative;
-            top: -40px;
+            top: 10%;
             display: flex;
             flex-flow: column nowrap;
             align-items: center;
             h1 {
+                margin: 0;
                 transition: all 0.9s;
-                font-size: 3em;
-                letter-spacing: 0.3vw !important;
+                font-size: 2em;
+                letter-spacing: 0.1vw !important;
             } 
             p {
                 transition: all 0.9s;
-                font-size: 1.5em;
-                padding: 0 10%;
+                font-size: 1em;
+                padding: 0 20px;
             }
         } 
         &:hover {
@@ -70,7 +89,7 @@ h1 {
     .covering {
         z-index: 60;
     }
-    .center-focused {
+    .focused {
         padding: 20px !important;
         left: calc(50vw - #{$block_width}) !important;  
         top: calc(50vh - #{$block_height}) !important;
@@ -78,11 +97,11 @@ h1 {
         height: calc(#{$block_height} *2) !important;
         z-index: 100;
         h1 {
-            font-size: 6em !important;
+            font-size: 4em !important;
             letter-spacing: 0.6vw !important;
         }
         p {
-            font-size: 3em !important;
+            font-size: 2em !important;
         }
     }
 }
